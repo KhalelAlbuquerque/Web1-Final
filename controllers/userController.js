@@ -4,6 +4,20 @@ const bcrypt = require('bcrypt')
 
 module.exports = class userController {
 
+    static async findUser(req,res){
+        const id = req.params.id
+
+        const foundUser = await userSchema.findOne({where:{id}})
+        
+        if(!foundUser){
+            return res.status(400).json({message:"Usuário não encontrado!"})
+        }
+
+        return res.status(200).json(foundUser)
+
+    }
+
+
     static async createUser(req,res){
         const {name, identificationNumber, phone, email, password, position} = req.body
 
@@ -28,9 +42,19 @@ module.exports = class userController {
             position
         }
 
-        const newUser = await userSchema.create(userData)
+        await userSchema.create(userData)
 
-        return res.status(400).json({message:`Usuário cadastrado!\n\n${newUser}`,})
+        return res.status(200).json({message:`Usuário cadastrado!`,})
+    }
+
+
+    static async editUser(req,res){
+
+        const {name, identificationNumber, phone, email, password, position} = req.body
+        const id = await userSchema.findOne({where:{identificationNumber}}).id
+
+        
+
     }
 
 }
