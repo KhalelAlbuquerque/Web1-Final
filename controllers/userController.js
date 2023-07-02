@@ -50,11 +50,28 @@ module.exports = class userController {
 
     static async editUser(req,res){
 
-        const {name, identificationNumber, phone, email, password, position} = req.body
+        const {name, identificationNumber, phone, email, position} = req.body
         const id = await userSchema.findOne({where:{identificationNumber}}).id
 
-        
+        const user = await userSchema.findOne({where:{id}})
 
+        if(!user){
+            return res.status(400).json({message:"Usuário não encontrado!"})
+        }
+
+        const newUSerData = {
+            name, 
+            identificationNumber, 
+            phone, 
+            email, 
+            position
+        }
+
+        await user.update(newUSerData ,{where:{id}})
+
+        return res.status(200).json({message:`Usuário editado com sucesso!`})
     }
+
+    
 
 }
