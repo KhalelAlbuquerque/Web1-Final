@@ -73,6 +73,15 @@ module.exports = class userController {
         return res.status(200).json({message:`Usuário editado com sucesso!`})
     }
 
-    
+    static async deleteUser(req,res){
 
+        const id = parseInt(req.params.id)
+
+        // FAZER VERIFICACAO
+
+        await userSchema.destroy({where:{id}})
+
+        res.status(200).json({message:`Usuário deleteado com sucesso!`})
+
+    }
 }
