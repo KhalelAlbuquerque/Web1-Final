@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 
 module.exports = class userController {
 
-    static async findUser(req,res){
+    static async findUserGet(req,res){
         const id = req.params.id
 
         const foundUser = await userSchema.findOne({where:{id}})
@@ -18,7 +18,7 @@ module.exports = class userController {
     }
 
 
-    static async createUser(req,res){
+    static async createUserPost(req,res){
         const {name, identificationNumber, phone, email, password, position} = req.body
 
         const checkIDNumber = await userSchema.findOne({where:{identificationNumber}})
@@ -48,10 +48,11 @@ module.exports = class userController {
     }
 
 
-    static async editUser(req,res){
+    static async editUserPost(req,res){
 
         const {name, identificationNumber, phone, email, position} = req.body
-        const id = await userSchema.findOne({where:{identificationNumber}}).id
+        const foundUser = await userSchema.findOne({where:{identificationNumber}, raw:true})
+        const id = foundUser.id
 
         const user = await userSchema.findOne({where:{id}})
 

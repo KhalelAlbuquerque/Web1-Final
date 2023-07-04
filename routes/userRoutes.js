@@ -3,8 +3,9 @@ const router = express.Router()
 const userController = require('../controllers/userController')
 
 
-router.get('/:id', userController.findUser)
-router.post('/create', userController.createUser)
+router.get('/:id', userController.findUserGet)
+router.post('/create', userController.createUserPost)
+router.post('/update/:id', userController.editUserPost)
 
 
 
