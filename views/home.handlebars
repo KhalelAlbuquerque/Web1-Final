@@ -24,25 +24,73 @@
     <div class="jobs-home">
         <a href="#">Ver mais</a>
 
-        <div class="carousel">
-            {{#each cards}}
+        <div id="wrapper">
+            <div id="carousel">
+                <div id="content">
+                    {{#each posts}}
 
-                {{#with this}}
+                            {{#with this}}
 
-                    <div class="card">
-                        <img src="#" alt=""> {{!-- Imagem do card --}}
-                        <p>TEXTO</p>
+                                <div class="card">
+                                    <img src="img/projeto_logo.jpg" alt="">
 
-                        <p>
-                            {{description}}
-                        </p>
+                                    <h2>
+                                        {{description}}
+                                    </h2>
 
-                        <a href="/jobs/{{id}}">Ver vaga</a>
-                    </div>
-            
-                {{/with}}
+                                    <a class="see-job" href="/jobs/{{id}}"><span>Ver vaga</span></a>
+                                </div>
+                        
+                            {{/with}}
 
-            {{/each}}
+                        {{/each}}
+
+                        <div class="card">
+                            <a class="see-more" href="/jobs/all">Ver todos</a>
+                        </div>
+                </div>
+            </div>
+
+            <button id="prev">
+                <img src="img/prev.svg" alt="">
+            </button>
+            <button id="next">
+                <img src="img/next.svg" alt="">
+            </button>
         </div>
-    </div>
 </section>
+
+<script>
+
+    const gap = 16;
+
+    const carousel = document.getElementById("carousel"),
+    content = document.getElementById("content"),
+    next = document.getElementById("next"),
+    prev = document.getElementById("prev");
+
+    next.addEventListener("click", e => {
+        carousel.scrollBy(width + gap, 0)
+        if (carousel.scrollWidth !== 0) {
+            prev.style.display = "flex"
+        }
+        if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+            next.style.display = "none"
+        }
+    })
+
+    prev.addEventListener("click", e => {
+        carousel.scrollBy(-(width + gap), 0);
+        if (carousel.scrollLeft - width - gap <= 0) {
+            prev.style.display = "none"
+        }
+        if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+            next.style.display = "flex"
+        }
+    })
+
+    let width = carousel.offsetWidth;
+    window.addEventListener("resize", e => (width = carousel.offsetWidth));
+
+
+</script>

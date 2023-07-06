@@ -4,7 +4,7 @@ module.exports = class postController{
 
     static async getPosts(req,res){
 
-        const posts = await postSchema.findAll()
+        const posts = await postSchema.findAll({raw:true})
         
         return res.status(200).render('home', {posts})
     }
@@ -13,7 +13,9 @@ module.exports = class postController{
 
         const id = req.params.id
 
-        const post = await postSchema.findOne({where: {id:id}})
+        const post = await postSchema.findOne({raw:true, where: {id:id}}) 
+
+        // .map((element)=>element.get({plain:true}))
 
         return res.status(200).json({message:"Post encontrado"})
 
@@ -21,8 +23,8 @@ module.exports = class postController{
 
     static async createPostPost(req,res){
 
-        const {title, description, startDate, endDate} = req.body
-        const userid = req.session.userid
+        const {title, description, startDate, endDate, UserId} = req.body
+
 
         try{
             const postData = {
@@ -30,7 +32,7 @@ module.exports = class postController{
                 description,
                 startDate,
                 endDate,
-                UserId:userid
+                UserId
             }
 
             await postSchema.create(postData)

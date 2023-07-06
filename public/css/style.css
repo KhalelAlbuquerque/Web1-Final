@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 
 *{
+    box-sizing:border-box;
     margin: 0;
     padding: 0;
     border: 0;
     text-decoration: none;
     list-style: none;
-    font-family: sans-serif;
+    font-family: Inter;
 }
 
 :root{
@@ -45,7 +47,7 @@ header{
 
 .barra-pesquisa{
     background: var(--color--white);
-    height: 2.188rem;
+    height: 3rem;
     border-radius: 30px;
     padding: 0.313rem;
     display: flex;
@@ -59,9 +61,15 @@ header{
     border: 0;
     outline: 0;
     font-size: 15px;
-    width: 0;
+    width: 12rem;
     padding: 0;
     transition: 0.4s;
+    overflow: hidden;
+}
+
+.barra-texto input{
+    outline: none;
+    width: 90%;
 }
 
 .botao-pesquisa{
@@ -73,9 +81,6 @@ header{
 }
 
 
-.barra-pesquisa:hover > .barra-texto {
-    width: 9.375rem;
-}
 
 nav{
     display: flex;
@@ -107,6 +112,7 @@ nav a:hover{
 
 main{
     width: 70%;
+    padding-bottom: 200px;
     margin: auto;
 }
 
@@ -129,7 +135,7 @@ main{
 }
 
 .site-presentation p{
-    font-family: "Inter";
+    font-family: "Archivo Black";
     display: block;
     min-width: 130px;
     min-height: 200px;
@@ -139,13 +145,10 @@ main{
     text-transform: uppercase;
 }
 
-
 .site-presentation img{
     width: 50%;
     min-width: 150px;
 }
-
-
 
 .make-difference{
     display: flex;
@@ -156,7 +159,7 @@ main{
     margin-top: 50px;
     background-color: var(--color--blue);
     padding: 5px 10px;
-    font-size: 31px;
+    font-size: 25px;
     font-weight: bold;
     box-sizing: border-box;
     width: 20em;
@@ -165,7 +168,9 @@ main{
     text-align: center;
 }
 
-
+.make-difference:hover{
+    background-color:#4091c0;
+}
 
 .find-job{
     display: flex;
@@ -184,4 +189,101 @@ main{
     color: var(--color--blue);
     font-size: 28px;
     font-weight: bold;
+}
+
+  
+#wrapper {
+    padding: 0 50px;
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+}
+
+#carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar {
+    height: 0;
+}
+
+#prev,
+#next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+#prev {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    display: none;
+}
+
+#next {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+
+#content {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: start;
+    padding-bottom: 85px;
+    align-items: center;
+    width: 20em;
+    height:400px;
+    background: #EBEBFF;
+    box-shadow: 7px 0 13px rgba(50, 50, 50, 0.22);
+    border-radius: 15px;
+    user-select:none
+}
+
+.see-job{
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 3rem;
+    width: 50%;
+    padding: 5px 10px;
+    background-color: var(--color--blue);
+    border-radius: 10px;
+}
+
+.see-job span{
+    margin: auto;
+    font-size: .7em;
+    color: white;
+}
+
+
+
+.card img{
+    width: 100%;
+    border-radius: 15px;
+    max-width: 350px;
 }
