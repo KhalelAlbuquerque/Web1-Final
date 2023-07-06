@@ -1,2 +1,48 @@
 {{!-- DESENVOLVER CONTEUDO --}}
+<section class="site-presentation-macro">
+    <div class="site-presentation">
+        <p>
+            Faça a diferença! Descubra oportunidades de trabalho
+            voluntário em ONGs comprometidas com causas sociais,
+            ambientais e educacionais. Junte-se a nós e
+            contribua para um mundo melhor. Encontre a 
+            vaga ideal para você e deixe o seu legado. 
+            Seja voluntário e impacte vidas!
+        </p>
 
+        <img src="img/ong_semFundo 1.png" alt="" class="ongSemFundo">
+    </div>
+
+    <a href="#" class="make-difference">Quero fazer a diferença</a>
+</section>
+
+<section class="find-job">
+    <h2>
+        Encontre a vaga certa para você
+    </h2>
+
+    <div class="jobs-home">
+        <a href="#">Ver mais</a>
+
+        <div class="carousel">
+            {{#each cards}}
+
+                {{#with this}}
+
+                    <div class="card">
+                        <img src="#" alt=""> {{!-- Imagem do card --}}
+                        <p>TEXTO</p>
+
+                        <p>
+                            {{description}}
+                        </p>
+
+                        <a href="/jobs/{{id}}">Ver vaga</a>
+                    </div>
+            
+                {{/with}}
+
+            {{/each}}
+        </div>
+    </div>
+</section>

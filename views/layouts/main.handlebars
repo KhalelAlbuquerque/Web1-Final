@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Voluntarios</title>
 </head>
 <body>
-    {{!-- VAI SER O CABECALHO E FOOTER --}}
+   <header>
 
-    {{{body}}}
+
+        <div class="homepage-search">
+            <a href="/"><img src="img/logo_header.svg" alt="#"></a>
+
+             <div class="barra-pesquisa">
+
+                <a href="/" class="botao-pesquisa">
+                    <img src="img/lupa.svg" alt="" class="icone-pesquisa">
+                </a>
+                
+                <input type="text" class="barra-texto " placeholder="Pesquisar">
+            </div>
+
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sou uma ONG</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Ajuda</a></li>
+            </ul>
+        </nav>
+   </header>
+
+
+    <main>
+        {{{body}}}
+    </main>
 
 
 </body>

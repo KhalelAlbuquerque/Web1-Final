@@ -15,29 +15,29 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
-app.use(session({
-    name:'session',
-    saveUninitialized:false,
-    secret:"senha",
-    resave:false,
-    cookie:{
-        secure:false,
-        maxAge:60*60*1000,
-        httpOnly:true,
-        expires: new Date(Date.now+60*60*1000)
-    }
-}))
+// app.use(session({
+//     name:'session',
+//     saveUninitialized:false,
+//     secret:"senha",
+//     resave:false,
+//     cookie:{
+//         secure:false,
+//         maxAge:60*60*1000,
+//         httpOnly:true,
+//         expires: new Date(Date.now+60*60*1000)
+//     }
+// }))
 
 
-app.use((req,res,next)=>{
+// app.use((req,res,next)=>{
 
-    if(req.session.userid){
-        res.locals.session = req.session
-    }
+//     if(req.session.userid){
+//         res.locals.session = req.session
+//     }
 
-    next()
+//     next()
 
-})
+// })
 
 
 
@@ -46,8 +46,10 @@ const PostSchema = require('./db/models/Post')
 
 
 const userRoutes = require('./routes/userRoutes')
+const postRoutes = require('./routes/postRoutes')
 
 app.use('/user', userRoutes)
+app.use('/', postRoutes)
 
 conn
 .sync()

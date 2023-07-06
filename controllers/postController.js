@@ -6,7 +6,7 @@ module.exports = class postController{
 
         const posts = await postSchema.findAll()
         
-        return res.status(200).json({message:"Posts encontrados"})
+        return res.status(200).render('home', {posts})
     }
 
     static async findPost(req, res){
